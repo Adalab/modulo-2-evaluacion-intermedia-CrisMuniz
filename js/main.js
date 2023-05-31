@@ -10,25 +10,40 @@ const btnPlay = document.querySelector('.js_btnPlay');
 const textPlay = document.querySelector('.js_textPlay');
 const moneyPlay = document.querySelector('.js_moneyPlay');
 
+const maxMoney = 200;
+const minMoney = 0;
+let saldo = 50;
+
 // generar un numero al azar del 1-6.
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
 
     };
 
-console.log(getRandomNumber(6));
+
 
 function handlerClickBtn() {
     const userOption = Number (select.value);
-    const machineOption =getRandomNumber(6);
+    const machineOption = getRandomNumber(6);
     console.log(userOption);
     console.log(machineOption);
-
-    if (userOption === machineOption) {
-        textPlay.innerHTML = "Has ganado el doble de lo apostado :)";
+    const bet = Number (inputMoney.value);
+    if (saldo <= minMoney || saldo >= maxMoney) {
+        textPlay.innerHTML = "El juego se ha acabado";
     }
     else {
-        textPlay.innerHTML = "Has perdido lo apostado :(";
+
+        if (userOption === machineOption) {
+            textPlay.innerHTML = "Has ganado el doble de lo apostado :)";
+            saldo = saldo + bet;
+        }
+        else {
+            textPlay.innerHTML = "Has perdido lo apostado :(";
+            saldo = saldo - bet;
+        };
     }
+    moneyPlay.innerHTML = `Saldo: ${saldo}`;
+  
+
 }
 btnPlay.addEventListener('click', handlerClickBtn);
