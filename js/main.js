@@ -10,20 +10,22 @@ const btnPlay = document.querySelector('.js_btnPlay');
 const textPlay = document.querySelector('.js_textPlay');
 const moneyPlay = document.querySelector('.js_moneyPlay');
 
+// hacer constantes para el dinero maximo. minimo y la apuesta inicial.Se utilizaran en la evaluacion de la condicion
 const maxMoney = 200;
 const minMoney = 0;
 let saldo = 50;
 
-// generar un numero al azar del 1-6.
+// generar un numero al azar del 1-6. hay que pasarle el numero maximo cuando la llamamos
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
 
     };
 
 
-
+//  hacer funcion click donde evalúo que numero escoge y lo compara con el aleatorio.Ademas evalúo la apuesta si gana o si pierde y muestro un mensaje.
+// tambien evaluuo si la apuesta esta entre un valor min y uno maximo 
 function handlerClickBtn() {
-    const userOption = Number (select.value);
+    const userOption = Number (select.value); /*en la consola me sale un strig por eso le cambio el tipo de valor*/
     const machineOption = getRandomNumber(6);
     console.log(userOption);
     console.log(machineOption);
@@ -45,5 +47,5 @@ function handlerClickBtn() {
     moneyPlay.innerHTML = `Saldo: ${saldo}`;
   
 
-}
+};
 btnPlay.addEventListener('click', handlerClickBtn);
